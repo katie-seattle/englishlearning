@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello English — Learn English Every Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #e8f4fd;
+  --blue: #2196F3;
+  --blue-dark: #1565C0;
+  --blue-light: #BBDEFB;
+  --green: #4CAF50;
+  --green-light: #C8E6C9;
+  --orange: #FF9800;
+  --orange-light: #FFE0B2;
+  --red: #F44336;
+  --red-light: #FFCDD2;
+  --yellow: #FFC107;
+  --yellow-light: #FFF9C4;
+  --purple: #9C27B0;
+  --purple-light: #E1BEE7;
+  --pink: #E91E63;
+  --teal: #009688;
+  --white: #FFFFFF;
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-600: #757575;
+  --gray-800: #424242;
+  --text: #212121;
+  --shadow: 0 4px 20px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--sky);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATED BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(33,150,243,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(76,175,80,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255,152,0,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: white;
+  box-shadow: 0 2px 12px rgba(33,150,243,0.15);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.5rem; font-weight: 800;
+  color: var(--blue);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.logo-emoji { font-size: 1.6rem; }
+
+.nav-right {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.nav-btn {
+  background: none; border: 2px solid transparent;
+  color: var(--gray-600); font-family: 'Nunito', sans-serif;
+  font-size: .9rem; font-weight: 700;
+  padding: 6px 16px; border-radius: 40px;
+  cursor: pointer; transition: all .2s;
+}
+
+.nav-btn:hover { background: var(--blue-light); color: var(--blue-dark); }
+.nav-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+/* ── SCREENS ── */
+.screen { display: none; position: relative; z-index: 1; }
+.screen.active { display: block; }
+
+/* ── HOME SCREEN ── */
+#home {
+  max-width: 1000px; margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-emoji {
+  font-size: 5rem;
+  animation: bounce 2s infinite;
+  display: block; margin-bottom: 1rem;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-bottom: .5rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--gray-600);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.progress-overview {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.prog-stat {
+  text-align: center; flex: 1; min-width: 100px;
+}
+
+.prog-num {
+  font-family: 'Baloo 2', cursive;
+  font-size: 2.5rem; font-weight: 800;
+  color: var(--blue);
+  display: block;
+}
+
+.prog-label {
+  font-size: .85rem; color: var(--gray-600); font-weight: 600;
+}
+
+.section-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+
+.day-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  cursor: pointer;
+  transition: all .25s;
+  box-shadow: var(--shadow);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 5px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.day-card.blue::before   { background: var(--blue); }
+.day-card.green::before  { background: var(--green); }
+.day-card.orange::before { background: var(--orange); }
+.day-card.purple::before { background: var(--purple); }
+.day-card.pink::before   { background: var(--pink); }
+.day-card.teal::before   { background: var(--teal); }
+.day-card.red::before    { background: var(--red); }
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.day-card.blue:hover   { border-color: var(--blue); }
+.day-card.green:hover  { border-color: var(--green); }
+.day-card.orange:hover { border-color: var(--orange); }
+.day-card.purple:hover { border-color: var(--purple); }
+.day-card.pink:hover   { border-color: var(--pink); }
+.day-card.teal:hover   { border-color: var(--teal); }
+.day-card.red:hover    { border-color: var(--red); }
+
+.day-card.completed { opacity: .7; }
+.day-card.completed::after {
+  content: '✓';
+  position: absolute; top: 12px; right: 12px;
+  width: 24px; height: 24px;
+  background: var(--green);
+  color: white; border-radius: 50%;
+  font-size: .75rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.day-emoji { font-size: 2.2rem; margin-bottom: .7rem; display: block; }
+.day-num {
+  font-size: .75rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gray-600); margin-bottom: .2rem;
+}
+.day-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: .3rem;
+}
+.day-desc { font-size: .8rem; color: var(--gray-600); line-height: 1.4; }
+.day-time {
+  font-size: .75rem; font-weight: 700;
+  color: var(--gray-600); margin-top: .6rem;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ── LESSON SCREEN ── */
+#lesson {
+  max-width: 800px; margin: 0 auto;
+  padding: 2rem;
+}
+
+.lesson-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-btn {
+  background: white; border: 2px solid var(--gray-300);
+  color: var(--gray-800); font-family: 'Nunito', sans-serif;
+  font-size: .9rem; font-weight: 700;
+  padding: 8px 18px; border-radius: 40px;
+  cursor: pointer; transition: all .2s;
+}
+
+.back-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+.lesson-title-block { flex: 1; }
+.lesson-day-label {
+  font-size: .75rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--gray-600); margin-bottom: .2rem;
+}
+
+.lesson-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.8rem; font-weight: 800;
+  color: var(--blue-dark);
+}
+
+/* LESSON PROGRESS */
+.lesson-progress {
+  background: white; border-radius: var(--radius);
+  padding: 1rem 1.5rem; margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.lp-steps {
+  display: flex; gap: 6px; flex: 1;
+}
+
+.lp-dot {
+  height: 10px; flex: 1;
+  border-radius: 5px;
+  background: var(--gray-200);
+  transition: background .3s;
+}
+
+.lp-dot.done { background: var(--green); }
+.lp-dot.active { background: var(--blue); }
+
+.lp-label {
+  font-size: .85rem; font-weight: 700;
+  color: var(--gray-600); white-space: nowrap;
+}
+
+/* SECTION CARD */
+.section-card {
+  background: white; border-radius: var(--radius);
+  padding: 2rem; margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  animation: cardIn .4s ease;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-card .sc-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: .3rem;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.section-card .sc-sub {
+  font-size: .9rem; color: var(--gray-600);
+  margin-bottom: 1.5rem; line-height: 1.5;
+}
+
+/* VOCABULARY CARDS */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.vocab-card {
+  background: var(--gray-50);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s;
+  user-select: none;
+}
+
+.vocab-card:hover {
+  border-color: var(--blue);
+  background: var(--blue-light);
+  transform: scale(1.03);
+}
+
+.vocab-card.flipped {
+  background: var(--blue);
+  border-color: var(--blue-dark);
+  color: white;
+}
+
+.vc-emoji { font-size: 2rem; margin-bottom: .5rem; display: block; }
+.vc-word { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 700; }
+.vc-translation { font-size: .8rem; opacity: .8; margin-top: .2rem; }
+
+/* SPEAK IT */
+.speak-btn {
+  background: var(--orange-light); border: 2px solid var(--orange);
+  color: var(--gray-800); font-family: 'Nunito', sans-serif;
+  font-size: .85rem; font-weight: 700;
+  padding: 6px 14px; border-radius: 40px;
+  cursor: pointer; transition: all .2s;
+  margin-top: .5rem;
+}
+
+.speak-btn:hover { background: var(--orange); color: white; }
+
+/* QUIZ */
+.quiz-question {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.4rem; font-weight: 700;
+  text-align: center; margin-bottom: 1.5rem;
+  color: var(--blue-dark);
+}
+
+.quiz-emoji { font-size: 4rem; display: block; text-align: center; margin-bottom: 1rem; }
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.quiz-opt {
+  background: var(--gray-50); border: 3px solid var(--gray-200);
+  border-radius: var(--radius-sm); padding: 1rem;
+  font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; text-align: center;
+}
+
+.quiz-opt:hover { border-color: var(--blue); background: var(--blue-light); }
+.quiz-opt.correct { border-color: var(--green); background: var(--green-light); color: var(--green); }
+.quiz-opt.wrong   { border-color: var(--red);   background: var(--red-light);   color: var(--red); }
+
+.quiz-feedback {
+  margin-top: 1rem; padding: 1rem;
+  border-radius: var(--radius-sm); text-align: center;
+  font-size: 1.1rem; font-weight: 700; display: none;
+}
+
+.quiz-feedback.show { display: block; animation: feedIn .3s ease; }
+.quiz-feedback.correct { background: var(--green-light); color: #2e7d32; }
+.quiz-feedback.wrong   { background: var(--red-light); color: #c62828; }
+
+@keyframes feedIn {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* FILL IN THE BLANK */
+.sentence-display {
+  font-size: 1.3rem; font-weight: 600;
+  text-align: center; margin-bottom: 1.5rem;
+  line-height: 1.8; color: var(--gray-800);
+}
+
+.blank-input {
+  border: none; border-bottom: 3px solid var(--blue);
+  background: transparent; font-family: 'Nunito', sans-serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--blue-dark);
+  width: 140px; text-align: center; outline: none; padding: 4px;
+}
+
+.word-bank {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin-bottom: 1.5rem;
+}
+
+.word-chip {
+  background: white; border: 2px solid var(--blue);
+  color: var(--blue); font-family: 'Nunito', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  padding: 6px 18px; border-radius: 40px;
+  cursor: pointer; transition: all .2s;
+}
+
+.word-chip:hover { background: var(--blue); color: white; }
+.word-chip.used  { opacity: .3; pointer-events: none; }
+
+/* MATCHING */
+.match-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+
+.match-col { display: flex; flex-direction: column; gap: 10px; }
+
+.match-item {
+  background: var(--gray-50); border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; text-align: center;
+}
+
+.match-item:hover    { border-color: var(--blue); background: var(--blue-light); }
+.match-item.selected { border-color: var(--orange); background: var(--orange-light); }
+.match-item.matched  { border-color: var(--green); background: var(--green-light); color: #2e7d32; pointer-events: none; }
+.match-item.wrong    { border-color: var(--red); background: var(--red-light); }
+
+/* LISTEN and TYPE */
+.listen-area {
+  background: var(--blue-light); border-radius: var(--radius-sm);
+  padding: 2rem; text-align: center; margin-bottom: 1.5rem;
+}
+
+.big-speak-btn {
+  background: var(--blue); color: white;
+  border: none; border-radius: 50%;
+  width: 80px; height: 80px;
+  font-size: 2rem; cursor: pointer;
+  transition: all .2s; box-shadow: 0 4px 16px rgba(33,150,243,0.4);
+}
+
+.big-speak-btn:hover { transform: scale(1.1); background: var(--blue-dark); }
+.big-speak-btn:active { transform: scale(.95); }
+
+.type-input {
+  width: 100%; padding: 14px 20px;
+  border: 3px solid var(--gray-300); border-radius: var(--radius-sm);
+  font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 600;
+  outline: none; transition: border-color .2s; margin-bottom: 1rem;
+}
+
+.type-input:focus { border-color: var(--blue); }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+  padding: 12px 28px; border-radius: 40px; border: none;
+  cursor: pointer; transition: all .2s;
+}
+
+.btn-primary { background: var(--blue); color: white; box-shadow: 0 4px 16px rgba(33,150,243,0.3); }
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+.btn-success { background: var(--green); color: white; box-shadow: 0 4px 16px rgba(76,175,80,0.3); }
+.btn-success:hover { background: #388E3C; transform: translateY(-2px); }
+
+.btn-outline { background: white; color: var(--blue); border: 3px solid var(--blue); }
+.btn-outline:hover { background: var(--blue-light); }
+
+/* CELEBRATION */
+.celebration {
+  text-align: center; padding: 2rem;
+}
+
+.celebration-emoji {
+  font-size: 5rem; display: block;
+  animation: celebBounce 1s ease infinite;
+}
+
+@keyframes celebBounce {
+  0%,100% { transform: rotate(-10deg) scale(1); }
+  50%      { transform: rotate(10deg) scale(1.1); }
+}
+
+.celebration h2 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 2rem; font-weight: 800;
+  color: var(--blue-dark); margin: 1rem 0 .5rem;
+}
+
+/* NAVIGATION BUTTONS */
+.nav-actions {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* DIALOGUE */
+.dialogue {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+
+.dlg-line {
+  display: flex; gap: 12px; align-items: flex-start;
+}
+
+.dlg-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+
+.dlg-a .dlg-avatar { background: var(--blue-light); }
+.dlg-b .dlg-avatar { background: var(--green-light); }
+
+.dlg-line.dlg-b { flex-direction: row-reverse; }
+
+.dlg-bubble {
+  max-width: 75%; padding: 12px 18px;
+  border-radius: 20px; font-size: 1rem; line-height: 1.5;
+}
+
+.dlg-a .dlg-bubble {
+  background: var(--blue); color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.dlg-b .dlg-bubble {
+  background: var(--green); color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.dlg-name {
+  font-size: .75rem; font-weight: 800; color: var(--gray-600);
+  margin-bottom: 4px;
+}
+
+.dlg-b .dlg-name { text-align: right; }
+
+.dlg-speak {
+  font-size: .75rem; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.4);
+  color: white; border-radius: 20px;
+  padding: 2px 10px; cursor: pointer;
+  margin-top: 6px; display: inline-block;
+  transition: all .2s;
+}
+
+.dlg-speak:hover { background: rgba(255,255,255,.4); }
+
+/* ALPHABET / SOUNDS */
+.alpha-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 10px;
+}
+
+.alpha-btn {
+  background: var(--gray-50); border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm); padding: 14px 8px;
+  font-family: 'Baloo 2', cursive; font-size: 1.6rem; font-weight: 800;
+  cursor: pointer; transition: all .2s; text-align: center;
+}
+
+.alpha-btn:hover { border-color: var(--blue); background: var(--blue-light); transform: scale(1.05); }
+.alpha-btn .alpha-sound { font-size: .7rem; font-weight: 700; color: var(--gray-600); display: block; margin-top: 2px; }
+
+/* SCORE */
+.score-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: white; border-radius: 40px;
+  padding: 8px 20px; box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.score-stars { font-size: 1.2rem; }
+.score-count { font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 800; color: var(--orange); }
+.score-label { font-size: .8rem; color: var(--gray-600); font-weight: 600; }
+
+/* TABLET/PHONE RESPONSIVE */
+@media (max-width: 600px) {
+  .days-grid { grid-template-columns: 1fr 1fr; }
+  .quiz-options { grid-template-columns: 1fr; }
+  .match-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 1rem; }
+  .nav-right { gap: 4px; }
+  .nav-btn { padding: 5px 10px; font-size: .8rem; }
+}
+
+/* STREAK */
+.streak {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--orange-light); border: 2px solid var(--orange);
+  border-radius: 40px; padding: 4px 16px;
+  font-weight: 800; color: var(--gray-800); font-size: .9rem;
+}
+
+/* PHRASEBOOK */
+.phrase-list { display: flex; flex-direction: column; gap: 12px; }
+
+.phrase-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--gray-50); border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  transition: all .2s;
+}
+
+.phrase-row:hover { border-color: var(--blue); background: var(--blue-light); }
+
+.phrase-en { font-weight: 800; font-size: 1.05rem; flex: 1; }
+.phrase-note { font-size: .85rem; color: var(--gray-600); flex: 1; }
+
+/* READING */
+.reading-text {
+  font-size: 1.1rem; line-height: 2;
+  color: var(--gray-800);
+}
+
+.reading-text .hl {
+  background: var(--yellow-light); border-bottom: 2px solid var(--yellow);
+  cursor: pointer; border-radius: 4px; padding: 0 2px;
+  transition: background .2s;
+}
+
+.reading-text .hl:hover { background: var(--yellow); }
+
+.word-popup {
+  position: fixed; background: var(--blue-dark);
+  color: white; padding: 10px 18px; border-radius: var(--radius-sm);
+  font-size: .9rem; font-weight: 700;
+  box-shadow: var(--shadow-lg); pointer-events: none;
+  z-index: 999; display: none;
+}
+
+/* ── DICTIONARY SCREEN ── */
+#dictionary {
+  max-width: 700px; margin: 0 auto; padding: 2rem;
+}
+
+.dict-search {
+  width: 100%; padding: 16px 24px;
+  border: 3px solid var(--blue); border-radius: 40px;
+  font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 600;
+  outline: none; margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(33,150,243,0.15);
+}
+
+.dict-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem 2rem; box-shadow: var(--shadow);
+  margin-bottom: 1rem; display: flex; gap: 1.5rem;
+  align-items: flex-start; transition: all .2s;
+}
+
+.dict-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+.dict-emoji { font-size: 2.5rem; flex-shrink: 0; }
+
+.dict-word {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.4rem; font-weight: 800; color: var(--blue-dark);
+}
+
+.dict-type {
+  font-size: .75rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--gray-600);
+  background: var(--gray-100); padding: 2px 10px;
+  border-radius: 20px; display: inline-block; margin-bottom: .4rem;
+}
+
+.dict-def { font-size: .95rem; color: var(--gray-600); line-height: 1.5; }
+.dict-example { font-size: .9rem; color: var(--blue); font-style: italic; margin-top: .3rem; }
+
+/* TIPS */
+.tip-box {
+  background: var(--yellow-light); border: 2px solid var(--yellow);
+  border-radius: var(--radius-sm); padding: 1rem 1.2rem;
+  font-size: .9rem; line-height: 1.6; margin: 1rem 0;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+
+.tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<!-- WORD POPUP -->
+<div class="word-popup" id="wordPopup"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-emoji">🌟</span>
+    Hello English
+  </div>
+  <div class="nav-right">
+    <button class="nav-btn active" onclick="showScreen('home')" id="nav-home">🏠 Home</button>
+    <button class="nav-btn" onclick="showScreen('dictionary')" id="nav-dict">📖 Words</button>
+    <div class="streak" id="streakDisplay">🔥 0 days</div>
+  </div>
+</nav>
+
+<!-- HOME SCREEN -->
+<div class="screen active" id="home">
+  <div style="max-width:1000px;margin:0 auto;padding:3rem 2rem;">
+
+    <div class="hero">
+      <span class="hero-emoji">👋</span>
+      <h1>Hello! Let's Learn English!</h1>
+      <p>Every day, one lesson. Easy steps. You can do it! 💪</p>
+
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <div class="streak">🔥 <span id="streakDays">0</span> day streak</div>
+        <div class="streak" style="background:var(--purple-light);border-color:var(--purple);">⭐ <span id="totalStars">0</span> stars earned</div>
+      </div>
+    </div>
+
+    <div class="progress-overview">
+      <div class="prog-stat">
+        <span class="prog-num" id="daysCompleted">0</span>
+        <span class="prog-label">Days Done</span>
+      </div>
+      <div class="prog-stat">
+        <span class="prog-num">14</span>
+        <span class="prog-label">Total Days</span>
+      </div>
+      <div class="prog-stat">
+        <span class="prog-num" id="wordsLearned">0</span>
+        <span class="prog-label">Words Learned</span>
+      </div>
+      <div style="flex:2;min-width:200px;">
+        <div style="font-size:.85rem;font-weight:700;color:var(--gray-600);margin-bottom:.5rem;">Overall Progress</div>
+        <div style="background:var(--gray-200);border-radius:10px;height:14px;overflow:hidden;">
+          <div id="overallProgress" style="height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:10px;width:0%;transition:width .5s;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">📅 Your 14-Day Journey</div>
+
+    <div class="days-grid" id="daysGrid"></div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div><strong>Tip:</strong> Do one lesson every day. 60 minutes is enough! Practice speaking out loud — it helps a lot. Don't worry about mistakes. Mistakes are how we learn! 😊</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LESSON SCREEN -->
+<div class="screen" id="lesson">
+  <div style="max-width:800px;margin:0 auto;padding:2rem;">
+
+    <div class="lesson-header">
+      <button class="back-btn" onclick="showScreen('home')">← Back</button>
+      <div class="lesson-title-block">
+        <div class="lesson-day-label" id="lessonDayLabel">Day 1</div>
+        <div class="lesson-title" id="lessonTitle">Hello!</div>
+      </div>
+      <div class="score-bar">
+        <span class="score-stars">⭐</span>
+        <span class="score-count" id="sessionStars">0</span>
+        <span class="score-label">stars</span>
+      </div>
+    </div>
+
+    <div class="lesson-progress">
+      <div class="lp-steps" id="lpSteps"></div>
+      <div class="lp-label" id="lpLabel">Step 1 of 5</div>
+    </div>
+
+    <div id="lessonContent"></div>
+
+    <div class="nav-actions" id="navActions">
+      <button class="btn btn-outline" id="prevStepBtn" onclick="prevStep()" style="display:none;">← Back</button>
+      <div></div>
+      <button class="btn btn-primary" id="nextStepBtn" onclick="nextStep()">Next →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- DICTIONARY SCREEN -->
+<div class="screen" id="dictionary">
+  <div style="max-width:700px;margin:0 auto;padding:2rem;">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;">
+      <button class="back-btn" onclick="showScreen('home')">← Home</button>
+      <div>
+        <div style="font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:var(--blue-dark);">📖 Word List</div>
+        <div style="font-size:.9rem;color:var(--gray-600);">All the words you are learning</div>
+      </div>
+    </div>
+    <input class="dict-search" type="text" placeholder="🔍 Search a word..." id="dictSearch" oninput="searchDict()">
+    <div id="dictResults"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════════════
+let state = JSON.parse(localStorage.getItem('helloEnglish') || '{}');
+state.completed = state.completed || [];
+state.stars = state.stars || 0;
+state.streak = state.streak || 0;
+state.wordsLearned = state.wordsLearned || 0;
+
+let currentDay = 0;
+let currentStep = 0;
+let sessionStars = 0;
+let quizAnswered = false;
+let matchSelected = null;
+let matchedPairs = 0;
+let fillAnswers = {};
+
+function saveState() {
+  localStorage.setItem('helloEnglish', JSON.stringify(state));
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SPEECH
+// ══════════════════════════════════════════════════════════════
+function speak(text, rate=0.85) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = rate; u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SCREENS
+// ══════════════════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (id === 'home') { document.getElementById('nav-home').classList.add('active'); updateHome(); }
+  if (id === 'dictionary') { document.getElementById('nav-dict').classList.add('active'); renderDict(); }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  14-DAY LESSON PLAN
+// ══════════════════════════════════════════════════════════════
+const DAYS = [
+  {
+    title: "Hello! Greetings",
+    emoji: "👋",
+    color: "blue",
+    desc: "Learn to say hello and goodbye",
+    steps: [
+      // Step 0: Vocabulary
+      {
+        type: "vocab",
+        title: "📚 New Words",
+        sub: "Click each word to hear it! Then click again to see the meaning.",
+        words: [
+          {emoji:"👋",word:"Hello",translation:"A greeting"},
+          {emoji:"🌅",word:"Good morning",translation:"Morning greeting"},
+          {emoji:"🌇",word:"Good evening",translation:"Evening greeting"},
+          {emoji:"👉",word:"My name is...",translation:"Tell your name"},
+          {emoji:"❓",word:"What is your name?",translation:"Ask someone's name"},
+          {emoji:"😊",word:"Nice to meet you",translation:"Happy to know you"},
+          {emoji:"👋",word:"Goodbye",translation:"See you later!"},
+          {emoji:"🤝",word:"How are you?",translation:"Ask how someone feels"},
+        ]
+      },
+      // Step 1: Dialogue
+      {
+        type: "dialogue",
+        title: "💬 Listen and Read",
+        sub: "Read this conversation. Click the 🔊 button to hear it!",
+        lines: [
+          {who:"A",name:"Anna",emoji:"👩",text:"Hello! My name is Anna. What is your name?"},
+          {who:"B",name:"Ben",emoji:"👨",text:"Hello, Anna! My name is Ben. Nice to meet you!"},
+          {who:"A",name:"Anna",emoji:"👩",text:"Nice to meet you too, Ben! How are you?"},
+          {who:"B",name:"Ben",emoji:"👨",text:"I am fine, thank you! And you?"},
+          {who:"A",name:"Anna",emoji:"👩",text:"I am good, thank you! Goodbye, Ben!"},
+          {who:"B",name:"Ben",emoji:"👨",text:"Goodbye, Anna! Have a nice day!"},
+        ]
+      },
+      // Step 2: Quiz
+      {
+        type: "quiz",
+        title: "🧠 Quiz Time!",
+        sub: "Choose the correct answer.",
+        questions: [
+          {emoji:"🌅",q:"You see someone in the morning. What do you say?",opts:["Good evening","Good morning","Goodbye","How are you?"],correct:1},
+          {emoji:"❓",q:"You want to know someone's name. You ask:",opts:["Goodbye!","Nice to meet you!","What is your name?","I am fine."],correct:2},
+          {emoji:"🤝",q:"Someone says 'How are you?' You answer:",opts:["My name is...","I am fine, thank you!","Good morning!","Goodbye!"],correct:1},
+          {emoji:"👋",q:"When you leave, you say:",opts:["Hello!","Nice to meet you","How are you?","Goodbye!"],correct:3},
+        ]
+      },
+      // Step 3: Fill in the blank
+      {
+        type: "fill",
+        title: "✏️ Fill in the Blank",
+        sub: "Click a word from the box. Put it in the right place!",
+        sentences: [
+          {text:["Hello! _____ is Anna.","My name"],answer:"My name",blank:1},
+          {text:["_____ to meet you!","Nice"],answer:"Nice",blank:0},
+          {text:["How _____ you?","are"],answer:"are",blank:1},
+          {text:["Good_____! Have a nice day!","bye"],answer:"bye",blank:1},
+        ],
+        words: ["My name","Nice","are","bye"]
+      },
+      // Step 4: Celebration
+      {
+        type: "complete",
+        title: "Day 1 Complete!",
+        message: "Amazing! You learned how to say hello in English! 🎉",
+        words: 8
+      }
+    ]
+  },
+
+  {
+    title: "Numbers 1–20",
+    emoji: "🔢",
+    color: "green",
+    desc: "Count and use numbers",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Numbers 1 to 10",
+        sub: "Click each number card to hear the English word!",
+        words: [
+          {emoji:"1️⃣",word:"One",translation:"1"},
+          {emoji:"2️⃣",word:"Two",translation:"2"},
+          {emoji:"3️⃣",word:"Three",translation:"3"},
+          {emoji:"4️⃣",word:"Four",translation:"4"},
+          {emoji:"5️⃣",word:"Five",translation:"5"},
+          {emoji:"6️⃣",word:"Six",translation:"6"},
+          {emoji:"7️⃣",word:"Seven",translation:"7"},
+          {emoji:"8️⃣",word:"Eight",translation:"8"},
+          {emoji:"9️⃣",word:"Nine",translation:"9"},
+          {emoji:"🔟",word:"Ten",translation:"10"},
+        ]
+      },
+      {
+        type: "vocab",
+        title: "📚 Numbers 11 to 20",
+        sub: "These are a little harder! Click to hear them.",
+        words: [
+          {emoji:"1️⃣1️⃣",word:"Eleven",translation:"11"},
+          {emoji:"1️⃣2️⃣",word:"Twelve",translation:"12"},
+          {emoji:"1️⃣3️⃣",word:"Thirteen",translation:"13"},
+          {emoji:"1️⃣4️⃣",word:"Fourteen",translation:"14"},
+          {emoji:"1️⃣5️⃣",word:"Fifteen",translation:"15"},
+          {emoji:"1️⃣6️⃣",word:"Sixteen",translation:"16"},
+          {emoji:"1️⃣7️⃣",word:"Seventeen",translation:"17"},
+          {emoji:"1️⃣8️⃣",word:"Eighteen",translation:"18"},
+          {emoji:"1️⃣9️⃣",word:"Nineteen",translation:"19"},
+          {emoji:"2️⃣0️⃣",word:"Twenty",translation:"20"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Number Quiz!",
+        sub: "What number is this?",
+        questions: [
+          {emoji:"7️⃣",q:"What number is this?",opts:["Five","Six","Seven","Eight"],correct:2},
+          {emoji:"1️⃣2️⃣",q:"What number is this?",opts:["Twenty","Twelve","Two","Eleven"],correct:1},
+          {emoji:"🔟",q:"What number is this?",opts:["Ten","Four","Fourteen","Fifteen"],correct:0},
+          {emoji:"1️⃣5️⃣",q:"What number is this?",opts:["Five","Fifty","Fifteen","Sixteen"],correct:2},
+        ]
+      },
+      {
+        type: "match",
+        title: "🎯 Match It!",
+        sub: "Match the number to the word! Click one from each side.",
+        pairs: [
+          {left:"3",right:"Three"},
+          {left:"8",right:"Eight"},
+          {left:"13",right:"Thirteen"},
+          {left:"20",right:"Twenty"},
+          {left:"16",right:"Sixteen"},
+        ]
+      },
+      {
+        type: "complete",
+        title: "Day 2 Complete!",
+        message: "Excellent! Now you can count to 20 in English! Count everything you see! 🔢",
+        words: 20
+      }
+    ]
+  },
+
+  {
+    title: "Colors",
+    emoji: "🌈",
+    color: "orange",
+    desc: "Learn colors in English",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Colors",
+        sub: "Click each color card to hear it!",
+        words: [
+          {emoji:"❤️",word:"Red",translation:"Like fire, blood"},
+          {emoji:"🔵",word:"Blue",translation:"Like the sky, water"},
+          {emoji:"💛",word:"Yellow",translation:"Like the sun"},
+          {emoji:"💚",word:"Green",translation:"Like grass, trees"},
+          {emoji:"🟠",word:"Orange",translation:"Like an orange fruit"},
+          {emoji:"🟣",word:"Purple",translation:"Like grapes"},
+          {emoji:"🩷",word:"Pink",translation:"Light red"},
+          {emoji:"🟤",word:"Brown",translation:"Like wood, chocolate"},
+          {emoji:"⚫",word:"Black",translation:"Darkest color"},
+          {emoji:"⚪",word:"White",translation:"Lightest color"},
+        ]
+      },
+      {
+        type: "phrases",
+        title: "📝 Using Colors",
+        sub: "Learn how to use colors in sentences!",
+        phrases: [
+          {en:"The sky is blue.",note:"Sky = the air above us"},
+          {en:"Grass is green.",note:"Grass = plants on the ground"},
+          {en:"Snow is white.",note:"Snow = frozen water from sky"},
+          {en:"The sun is yellow.",note:"Sun = the star in the sky"},
+          {en:"My shirt is red.",note:"Shirt = clothing you wear"},
+          {en:"What color is this?",note:"Use this to ask about color"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Color Quiz!",
+        sub: "Choose the correct color!",
+        questions: [
+          {emoji:"🌿",q:"What color is grass?",opts:["Blue","Red","Green","Yellow"],correct:2},
+          {emoji:"☁️",q:"What color is snow?",opts:["Black","White","Brown","Orange"],correct:1},
+          {emoji:"🌞",q:"What color is the sun?",opts:["Purple","Blue","Green","Yellow"],correct:3},
+          {emoji:"🫐",q:"What color are blueberries?",opts:["Green","Blue","Red","Yellow"],correct:1},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Fill in the Color!",
+        sub: "What color is it? Fill in the blank!",
+        sentences: [
+          {text:["The sky is _____.","blue"],answer:"blue",blank:1},
+          {text:["An apple is _____.","red"],answer:"red",blank:1},
+          {text:["A banana is _____.","yellow"],answer:"yellow",blank:1},
+          {text:["Night is _____.","black"],answer:"black",blank:1},
+        ],
+        words: ["blue","red","yellow","black"]
+      },
+      {
+        type: "complete",
+        title: "Day 3 Complete!",
+        message: "Beautiful! You know your colors in English now! Look around — what color do you see? 🌈",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Family Members",
+    emoji: "👨‍👩‍👧‍👦",
+    color: "purple",
+    desc: "Talk about your family",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Family Words",
+        sub: "Click to hear each word!",
+        words: [
+          {emoji:"👨",word:"Father / Dad",translation:"Your male parent"},
+          {emoji:"👩",word:"Mother / Mom",translation:"Your female parent"},
+          {emoji:"👦",word:"Brother",translation:"A male sibling"},
+          {emoji:"👧",word:"Sister",translation:"A female sibling"},
+          {emoji:"👴",word:"Grandfather",translation:"Dad or mom's father"},
+          {emoji:"👵",word:"Grandmother",translation:"Dad or mom's mother"},
+          {emoji:"👨‍👩‍👧‍👦",word:"Family",translation:"All your relatives"},
+          {emoji:"🧒",word:"Child / Children",translation:"Young people"},
+          {emoji:"👰",word:"Wife",translation:"A married woman"},
+          {emoji:"🤵",word:"Husband",translation:"A married man"},
+        ]
+      },
+      {
+        type: "dialogue",
+        title: "💬 Talking About Family",
+        sub: "Read and listen to this conversation!",
+        lines: [
+          {who:"A",name:"Maria",emoji:"👩",text:"Do you have a big family?"},
+          {who:"B",name:"Tom",emoji:"👨",text:"Yes! I have a mother, a father, and two sisters."},
+          {who:"A",name:"Maria",emoji:"👩",text:"How old are your sisters?"},
+          {who:"B",name:"Tom",emoji:"👨",text:"One sister is ten years old. The other is fifteen."},
+          {who:"A",name:"Maria",emoji:"👩",text:"That is a nice family! Do you have grandparents?"},
+          {who:"B",name:"Tom",emoji:"👨",text:"Yes, I have a grandmother. She is very kind."},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Family Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"👨",q:"This is your male parent. He is your...",opts:["Brother","Father","Grandfather","Husband"],correct:1},
+          {emoji:"👵",q:"Your mother's mother is your...",opts:["Sister","Aunt","Grandmother","Mother"],correct:2},
+          {emoji:"👧",q:"A girl who has the same parents as you is your...",opts:["Wife","Mother","Grandmother","Sister"],correct:3},
+          {emoji:"👨‍👩‍👧‍👦",q:"All your relatives together are your...",opts:["Friends","Neighbors","Family","Class"],correct:2},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Fill in the Blank!",
+        sub: "Complete each sentence!",
+        sentences: [
+          {text:["My _____ is my female parent.","mother"],answer:"mother",blank:1},
+          {text:["I have one _____ . He is twelve years old.","brother"],answer:"brother",blank:1},
+          {text:["My _____ is very old. She is eighty.","grandmother"],answer:"grandmother",blank:1},
+          {text:["We are a big _____ .","family"],answer:"family",blank:1},
+        ],
+        words: ["mother","brother","grandmother","family"]
+      },
+      {
+        type: "complete",
+        title: "Day 4 Complete!",
+        message: "Wonderful! You can talk about your family in English! Tell someone about your family today! 👨‍👩‍👧‍👦",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Food and Drink",
+    emoji: "🍎",
+    color: "red",
+    desc: "Name foods and drinks",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Food Words",
+        sub: "Click each food to hear it!",
+        words: [
+          {emoji:"🍎",word:"Apple",translation:"A round red fruit"},
+          {emoji:"🍌",word:"Banana",translation:"A yellow curved fruit"},
+          {emoji:"🍚",word:"Rice",translation:"Small white grains, very common"},
+          {emoji:"🍞",word:"Bread",translation:"Baked food from flour"},
+          {emoji:"🥚",word:"Egg",translation:"From a chicken"},
+          {emoji:"🍗",word:"Chicken",translation:"Common meat"},
+          {emoji:"🥦",word:"Vegetable",translation:"Healthy plants we eat"},
+          {emoji:"💧",word:"Water",translation:"Clear drink, very important"},
+          {emoji:"🥛",word:"Milk",translation:"White drink from cows"},
+          {emoji:"🍵",word:"Tea",translation:"Hot drink from leaves"},
+        ]
+      },
+      {
+        type: "phrases",
+        title: "📝 Eating and Drinking",
+        sub: "Learn these useful food phrases!",
+        phrases: [
+          {en:"I am hungry.",note:"You need food"},
+          {en:"I am thirsty.",note:"You need water or drink"},
+          {en:"I like apples.",note:"Apples make you happy"},
+          {en:"I don't like onions.",note:"Onions make you unhappy 😄"},
+          {en:"Can I have some water, please?",note:"Polite way to ask for water"},
+          {en:"This is delicious!",note:"This means the food is very good"},
+          {en:"I would like rice, please.",note:"Polite way to order food"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Food Quiz!",
+        sub: "What is it?",
+        questions: [
+          {emoji:"🍌",q:"This yellow curved fruit is a...",opts:["Apple","Orange","Banana","Mango"],correct:2},
+          {emoji:"💧",q:"You are thirsty. You drink...",opts:["Bread","Water","Egg","Rice"],correct:1},
+          {emoji:"😋",q:"The food is very good. You say...",opts:["I am hungry","That is bread","This is delicious!","I don't like it"],correct:2},
+          {emoji:"🥛",q:"This white drink comes from a cow. It is...",opts:["Water","Tea","Juice","Milk"],correct:3},
+        ]
+      },
+      {
+        type: "match",
+        title: "🎯 Match Food to Meaning!",
+        sub: "Click one from each side to match!",
+        pairs: [
+          {left:"🍎",right:"Apple"},
+          {left:"🍞",right:"Bread"},
+          {left:"💧",right:"Water"},
+          {left:"🥚",right:"Egg"},
+          {left:"🍵",right:"Tea"},
+        ]
+      },
+      {
+        type: "complete",
+        title: "Day 5 Complete!",
+        message: "Delicious! You know food words in English! Practice at your next meal! 🍎",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Days and Time",
+    emoji: "📅",
+    color: "teal",
+    desc: "Learn days of the week and time",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Days of the Week",
+        sub: "There are 7 days. Click to hear each one!",
+        words: [
+          {emoji:"1️⃣",word:"Monday",translation:"Day 1 — work day"},
+          {emoji:"2️⃣",word:"Tuesday",translation:"Day 2 — work day"},
+          {emoji:"3️⃣",word:"Wednesday",translation:"Day 3 — middle of week"},
+          {emoji:"4️⃣",word:"Thursday",translation:"Day 4 — work day"},
+          {emoji:"5️⃣",word:"Friday",translation:"Day 5 — end of work week"},
+          {emoji:"🎉",word:"Saturday",translation:"Day 6 — weekend!"},
+          {emoji:"😴",word:"Sunday",translation:"Day 7 — rest day"},
+          {emoji:"📅",word:"Today",translation:"This day now"},
+          {emoji:"⬅️",word:"Yesterday",translation:"The day before today"},
+          {emoji:"➡️",word:"Tomorrow",translation:"The day after today"},
+        ]
+      },
+      {
+        type: "vocab",
+        title: "📚 Time Words",
+        sub: "Learn how to talk about time!",
+        words: [
+          {emoji:"⏰",word:"Morning",translation:"6am — 12pm"},
+          {emoji:"☀️",word:"Afternoon",translation:"12pm — 6pm"},
+          {emoji:"🌙",word:"Night",translation:"After dark"},
+          {emoji:"🕐",word:"Hour",translation:"60 minutes"},
+          {emoji:"⏱️",word:"Minute",translation:"60 seconds"},
+          {emoji:"❓",word:"What time is it?",translation:"Ask for the time"},
+          {emoji:"🕐",word:"It is one o'clock.",translation:"The time is 1:00"},
+          {emoji:"🕑",word:"It is two o'clock.",translation:"The time is 2:00"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Days Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"📅",q:"The day AFTER today is called...",opts:["Yesterday","Tomorrow","Monday","Morning"],correct:1},
+          {emoji:"🎉",q:"Saturday and Sunday are the...",opts:["Work days","School days","Weekend","Morning"],correct:2},
+          {emoji:"⏰",q:"6am to 12pm is called...",opts:["Night","Afternoon","Evening","Morning"],correct:3},
+          {emoji:"3️⃣",q:"What is the THIRD day of the week?",opts:["Monday","Tuesday","Wednesday","Thursday"],correct:2},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Fill in the Day!",
+        sub: "Complete the sentences!",
+        sentences: [
+          {text:["After Sunday comes _____ .","Monday"],answer:"Monday",blank:1},
+          {text:["The day before today is _____ .","yesterday"],answer:"yesterday",blank:1},
+          {text:["Saturday is the _____ .","weekend"],answer:"weekend",blank:1},
+          {text:["After Monday comes _____ .","Tuesday"],answer:"Tuesday",blank:1},
+        ],
+        words: ["Monday","yesterday","weekend","Tuesday"]
+      },
+      {
+        type: "complete",
+        title: "Day 6 Complete!",
+        message: "Great job! Now you can say what day it is in English! What day is today? 📅",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "The Body",
+    emoji: "🧍",
+    color: "pink",
+    desc: "Name parts of the body",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Body Parts",
+        sub: "Touch each part of your body as you learn the word!",
+        words: [
+          {emoji:"👁️",word:"Eye",translation:"You see with eyes"},
+          {emoji:"👂",word:"Ear",translation:"You hear with ears"},
+          {emoji:"👃",word:"Nose",translation:"You smell with nose"},
+          {emoji:"👄",word:"Mouth",translation:"You eat and talk"},
+          {emoji:"🦷",word:"Tooth / Teeth",translation:"Inside your mouth"},
+          {emoji:"✋",word:"Hand",translation:"At the end of your arm"},
+          {emoji:"🦵",word:"Leg",translation:"You walk with legs"},
+          {emoji:"🦶",word:"Foot / Feet",translation:"At the end of legs"},
+          {emoji:"💪",word:"Arm",translation:"From shoulder to hand"},
+          {emoji:"❤️",word:"Heart",translation:"Pumps blood inside you"},
+        ]
+      },
+      {
+        type: "phrases",
+        title: "📝 Talking About Pain",
+        sub: "Learn how to say when something hurts!",
+        phrases: [
+          {en:"My head hurts.",note:"You have a headache"},
+          {en:"My stomach hurts.",note:"Your belly is in pain"},
+          {en:"I have a cold.",note:"Your nose runs, you sneeze"},
+          {en:"I have a fever.",note:"Your body is too hot"},
+          {en:"My leg hurts.",note:"Pain in your leg"},
+          {en:"I need a doctor.",note:"You need medical help"},
+          {en:"I feel sick.",note:"You don't feel well"},
+          {en:"I feel better now.",note:"You are improving"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Body Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"👁️",q:"You use these to see. They are your...",opts:["Ears","Nose","Eyes","Hands"],correct:2},
+          {emoji:"🦵",q:"You use these to walk. They are your...",opts:["Arms","Legs","Hands","Eyes"],correct:1},
+          {emoji:"🤒",q:"You feel very hot. You probably have a...",opts:["Cold","Fever","Headache","Broken arm"],correct:1},
+          {emoji:"✋",q:"At the end of your arm is your...",opts:["Foot","Ear","Hand","Eye"],correct:2},
+        ]
+      },
+      {
+        type: "match",
+        title: "🎯 Match Body Parts!",
+        sub: "Match the emoji to the word!",
+        pairs: [
+          {left:"👁️",right:"Eye"},
+          {left:"👂",right:"Ear"},
+          {left:"✋",right:"Hand"},
+          {left:"🦵",right:"Leg"},
+          {left:"👄",right:"Mouth"},
+        ]
+      },
+      {
+        type: "complete",
+        title: "Day 7 Complete!",
+        message: "Excellent! You know body parts in English! One full week done! You are amazing! 🧍⭐",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Common Verbs",
+    emoji: "🏃",
+    color: "blue",
+    desc: "Action words we use every day",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Action Words (Verbs)",
+        sub: "Verbs are action words! Do each action as you click!",
+        words: [
+          {emoji:"🚶",word:"Walk",translation:"Move on your feet slowly"},
+          {emoji:"🏃",word:"Run",translation:"Move on your feet fast"},
+          {emoji:"🍽️",word:"Eat",translation:"Put food in your mouth"},
+          {emoji:"💧",word:"Drink",translation:"Take liquid into mouth"},
+          {emoji:"😴",word:"Sleep",translation:"Rest with eyes closed"},
+          {emoji:"📖",word:"Read",translation:"Look at words and understand"},
+          {emoji:"✍️",word:"Write",translation:"Make letters or words"},
+          {emoji:"🗣️",word:"Speak / Talk",translation:"Use your voice with words"},
+          {emoji:"👂",word:"Listen",translation:"Pay attention with ears"},
+          {emoji:"😄",word:"Smile",translation:"Show happiness with mouth"},
+        ]
+      },
+      {
+        type: "phrases",
+        title: "📝 Using Verbs in Sentences",
+        sub: "Verbs go after the person (I, you, he, she)!",
+        phrases: [
+          {en:"I walk to school.",note:"Walk = move on foot"},
+          {en:"She reads every day.",note:"She = a woman"},
+          {en:"They eat rice.",note:"They = more than one person"},
+          {en:"He drinks water.",note:"He = a man"},
+          {en:"We sleep at night.",note:"We = you + others"},
+          {en:"I speak English!",note:"Great sentence for you! 😊"},
+          {en:"Please listen carefully.",note:"Please = polite word"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Verb Quiz!",
+        sub: "What is the action?",
+        questions: [
+          {emoji:"🏃",q:"Moving fast on your feet. You...",opts:["Eat","Run","Sleep","Drink"],correct:1},
+          {emoji:"😴",q:"At night, you close your eyes and...",opts:["Run","Eat","Sleep","Walk"],correct:2},
+          {emoji:"📖",q:"Looking at words in a book. You...",opts:["Write","Speak","Listen","Read"],correct:3},
+          {emoji:"🗣️",q:"Using your voice with words. You...",opts:["Walk","Sleep","Speak","Eat"],correct:2},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Fill in the Verb!",
+        sub: "Choose the right action word!",
+        sentences: [
+          {text:["I _____ rice every day.","eat"],answer:"eat",blank:1},
+          {text:["She _____ English very well.","speaks"],answer:"speaks",blank:1},
+          {text:["They _____ to school every morning.","walk"],answer:"walk",blank:1},
+          {text:["Please _____ to the teacher.","listen"],answer:"listen",blank:1},
+        ],
+        words: ["eat","speaks","walk","listen"]
+      },
+      {
+        type: "complete",
+        title: "Day 8 Complete!",
+        message: "Fantastic! Action words make your sentences come alive! Walk, run, eat, speak — you know them all! 🏃",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "At the Store",
+    emoji: "🛒",
+    color: "green",
+    desc: "Shopping and asking for prices",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Shopping Words",
+        sub: "Click to hear words you need at the store!",
+        words: [
+          {emoji:"🛒",word:"Store / Shop",translation:"A place to buy things"},
+          {emoji:"💰",word:"Money",translation:"What you pay with"},
+          {emoji:"💵",word:"Dollar",translation:"US money ($ symbol)"},
+          {emoji:"🏷️",word:"Price",translation:"How much something costs"},
+          {emoji:"🛍️",word:"Buy",translation:"To pay and take something"},
+          {emoji:"💳",word:"Pay",translation:"To give money"},
+          {emoji:"🧾",word:"Receipt",translation:"Paper showing your purchase"},
+          {emoji:"🆓",word:"Free",translation:"No cost! Zero money!"},
+          {emoji:"📦",word:"Package",translation:"A box or bag with items"},
+          {emoji:"🔖",word:"Sale",translation:"Things cost less today!"},
+        ]
+      },
+      {
+        type: "dialogue",
+        title: "💬 At the Store",
+        sub: "Read this shopping conversation!",
+        lines: [
+          {who:"A",name:"Customer",emoji:"🧑",text:"Excuse me. How much is this apple?"},
+          {who:"B",name:"Worker",emoji:"👨‍💼",text:"That apple is one dollar."},
+          {who:"A",name:"Customer",emoji:"🧑",text:"And how much is the bread?"},
+          {who:"B",name:"Worker",emoji:"👨‍💼",text:"The bread is three dollars."},
+          {who:"A",name:"Customer",emoji:"🧑",text:"I would like one apple and one bread, please."},
+          {who:"B",name:"Worker",emoji:"👨‍💼",text:"That is four dollars total. Thank you!"},
+          {who:"A",name:"Customer",emoji:"🧑",text:"Thank you! Have a good day!"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Shopping Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"💰",q:"You want to buy something. You need...",opts:["A doctor","Money","A book","Water"],correct:1},
+          {emoji:"🏷️",q:"How much does it cost? You ask for the...",opts:["Receipt","Sale","Price","Package"],correct:2},
+          {emoji:"🆓",q:"This word means zero cost!",opts:["Buy","Pay","Sale","Free"],correct:3},
+          {emoji:"🧾",q:"After you pay, the store gives you a...",opts:["Sale","Receipt","Price","Dollar"],correct:1},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ At the Store",
+        sub: "Fill in the correct word!",
+        sentences: [
+          {text:["How _____ is this?","much"],answer:"much",blank:1},
+          {text:["I would like to _____ this apple.","buy"],answer:"buy",blank:1},
+          {text:["That is five _____ please.","dollars"],answer:"dollars",blank:1},
+          {text:["Thank you. Here is your _____ .","receipt"],answer:"receipt",blank:1},
+        ],
+        words: ["much","buy","dollars","receipt"]
+      },
+      {
+        type: "complete",
+        title: "Day 9 Complete!",
+        message: "Now you can shop in English! How much is it? I would like... Great skills! 🛒",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Directions",
+    emoji: "🗺️",
+    color: "orange",
+    desc: "Ask and give directions",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Direction Words",
+        sub: "Point in each direction as you click the card!",
+        words: [
+          {emoji:"⬆️",word:"Straight / Forward",translation:"Keep going the same way"},
+          {emoji:"⬅️",word:"Left",translation:"Turn to the left side"},
+          {emoji:"➡️",word:"Right",translation:"Turn to the right side"},
+          {emoji:"🔄",word:"Turn",translation:"Change direction"},
+          {emoji:"🏢",word:"Building",translation:"A large structure"},
+          {emoji:"🚦",word:"Traffic light",translation:"Red, yellow, green light"},
+          {emoji:"🔢",word:"Block",translation:"One section of a street"},
+          {emoji:"🗺️",word:"Map",translation:"A picture showing places"},
+          {emoji:"📍",word:"Here",translation:"This place, where you are"},
+          {emoji:"🎯",word:"There",translation:"That place, not here"},
+        ]
+      },
+      {
+        type: "dialogue",
+        title: "💬 Asking for Directions",
+        sub: "Read this conversation on the street!",
+        lines: [
+          {who:"A",name:"Visitor",emoji:"🧑",text:"Excuse me! Where is the hospital?"},
+          {who:"B",name:"Local",emoji:"👩",text:"The hospital? Go straight two blocks."},
+          {who:"A",name:"Visitor",emoji:"🧑",text:"Then what?"},
+          {who:"B",name:"Local",emoji:"👩",text:"Then turn left at the traffic light."},
+          {who:"A",name:"Visitor",emoji:"🧑",text:"Left at the traffic light. Okay!"},
+          {who:"B",name:"Local",emoji:"👩",text:"The hospital is the big white building on the right."},
+          {who:"A",name:"Visitor",emoji:"🧑",text:"Thank you so much! You are very kind!"},
+          {who:"B",name:"Local",emoji:"👩",text:"You are welcome! Good luck!"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Directions Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"➡️",q:"You turn to the right side. You turn...",opts:["Left","Back","Right","Forward"],correct:2},
+          {emoji:"🚦",q:"Red, yellow, green on the street. It is a...",opts:["Map","Block","Building","Traffic light"],correct:3},
+          {emoji:"⬆️",q:"Keep going the same way means go...",opts:["Left","Straight","Right","Back"],correct:1},
+          {emoji:"📍",q:"The place where you are standing is...",opts:["There","Far","Here","Turn"],correct:2},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Give Directions!",
+        sub: "Fill in the direction word!",
+        sentences: [
+          {text:["Go _____ two blocks.","straight"],answer:"straight",blank:1},
+          {text:["Turn _____ at the light.","left"],answer:"left",blank:1},
+          {text:["The store is on the _____ side.","right"],answer:"right",blank:1},
+          {text:["Can you show me on the _____ ?","map"],answer:"map",blank:1},
+        ],
+        words: ["straight","left","right","map"]
+      },
+      {
+        type: "complete",
+        title: "Day 10 Complete!",
+        message: "Wonderful! Now you can ask and follow directions in English! Go straight — you're doing great! 🗺️",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Weather and Seasons",
+    emoji: "☀️",
+    color: "teal",
+    desc: "Talk about the weather",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Weather Words",
+        sub: "What is the weather like today? Learn these words!",
+        words: [
+          {emoji:"☀️",word:"Sunny",translation:"The sun is shining"},
+          {emoji:"🌧️",word:"Rainy",translation:"Water falls from sky"},
+          {emoji:"🌬️",word:"Windy",translation:"The wind is blowing"},
+          {emoji:"❄️",word:"Snowy",translation:"Snow is falling"},
+          {emoji:"☁️",word:"Cloudy",translation:"Many clouds in sky"},
+          {emoji:"⛈️",word:"Stormy",translation:"Thunder and lightning"},
+          {emoji:"🌡️",word:"Hot",translation:"High temperature"},
+          {emoji:"🥶",word:"Cold",translation:"Low temperature"},
+          {emoji:"😊",word:"Warm",translation:"Nice, not too hot"},
+          {emoji:"🌸",word:"Spring",translation:"Season after winter"},
+        ]
+      },
+      {
+        type: "vocab",
+        title: "📚 The Four Seasons",
+        sub: "A year has four seasons. Click to learn them!",
+        words: [
+          {emoji:"🌸",word:"Spring",translation:"Warm, flowers grow"},
+          {emoji:"☀️",word:"Summer",translation:"Hot, no school!"},
+          {emoji:"🍂",word:"Autumn / Fall",translation:"Cool, leaves fall"},
+          {emoji:"❄️",word:"Winter",translation:"Cold, maybe snow"},
+          {emoji:"🌡️",word:"Temperature",translation:"How hot or cold"},
+          {emoji:"☂️",word:"Umbrella",translation:"Keeps you dry in rain"},
+          {emoji:"🧥",word:"Coat",translation:"Warm clothing for cold"},
+          {emoji:"😎",word:"Sunglasses",translation:"Protect eyes from sun"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Weather Quiz!",
+        sub: "What is the weather?",
+        questions: [
+          {emoji:"❄️",q:"It is very cold and white outside. It is...",opts:["Sunny","Rainy","Snowy","Windy"],correct:2},
+          {emoji:"🌸",q:"The flowers are growing. It is probably...",opts:["Winter","Summer","Autumn","Spring"],correct:3},
+          {emoji:"☂️",q:"It is raining. You need an...",opts:["Sunglasses","Umbrella","Coat","Hat"],correct:1},
+          {emoji:"☀️",q:"The sun is shining. It is a _____ day.",opts:["Rainy","Cloudy","Stormy","Sunny"],correct:3},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ What's the Weather?",
+        sub: "Fill in the weather word!",
+        sentences: [
+          {text:["It is _____ . I need an umbrella.","raining"],answer:"raining",blank:1},
+          {text:["The sun is hot. It is _____ .","summer"],answer:"summer",blank:1},
+          {text:["I wear a _____ because it is cold.","coat"],answer:"coat",blank:1},
+          {text:["The wind is strong. It is very _____ .","windy"],answer:"windy",blank:1},
+        ],
+        words: ["raining","summer","coat","windy"]
+      },
+      {
+        type: "complete",
+        title: "Day 11 Complete!",
+        message: "Great! Now you can talk about the weather in English! What is the weather today? ☀️",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Feelings and Emotions",
+    emoji: "😊",
+    color: "purple",
+    desc: "Express how you feel",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 Feeling Words",
+        sub: "Make the face as you click each word!",
+        words: [
+          {emoji:"😊",word:"Happy",translation:"You feel good, joyful"},
+          {emoji:"😢",word:"Sad",translation:"You feel bad, unhappy"},
+          {emoji:"😠",word:"Angry",translation:"You feel mad, upset"},
+          {emoji:"😨",word:"Scared / Afraid",translation:"You feel fear"},
+          {emoji:"😴",word:"Tired",translation:"You need to sleep"},
+          {emoji:"😮",word:"Surprised",translation:"Something unexpected!"},
+          {emoji:"🤔",word:"Confused",translation:"You don't understand"},
+          {emoji:"😌",word:"Calm",translation:"Relaxed, peaceful"},
+          {emoji:"🤩",word:"Excited",translation:"Very happy about something"},
+          {emoji:"😐",word:"Okay / Fine",translation:"Not bad, not great"},
+        ]
+      },
+      {
+        type: "phrases",
+        title: "📝 Talking About Feelings",
+        sub: "Learn these important phrases!",
+        phrases: [
+          {en:"I feel happy today!",note:"Share good feelings"},
+          {en:"I am very tired.",note:"You need rest"},
+          {en:"Are you okay?",note:"Ask if someone is alright"},
+          {en:"I am a little scared.",note:"A little = not very much"},
+          {en:"Don't worry! Everything is okay.",note:"Comfort someone"},
+          {en:"I am so excited!",note:"Very happy about something coming"},
+          {en:"I feel much better now.",note:"You were sick, now you feel good"},
+          {en:"Why are you sad?",note:"Ask a friend about feelings"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 Feelings Quiz!",
+        sub: "How do they feel?",
+        questions: [
+          {emoji:"😢",q:"A child is crying. The child is...",opts:["Happy","Excited","Sad","Surprised"],correct:2},
+          {emoji:"🤩",q:"Tomorrow is your birthday! You feel...",opts:["Scared","Tired","Confused","Excited"],correct:3},
+          {emoji:"😴",q:"You worked all day. You feel very...",opts:["Happy","Angry","Tired","Surprised"],correct:2},
+          {emoji:"😨",q:"You see a big spider! You feel...",opts:["Happy","Afraid","Excited","Calm"],correct:1},
+        ]
+      },
+      {
+        type: "fill",
+        title: "✏️ Fill in the Feeling!",
+        sub: "How do you feel?",
+        sentences: [
+          {text:["I am very _____ . I need to sleep.","tired"],answer:"tired",blank:1},
+          {text:["She is _____ because it is her birthday!","excited"],answer:"excited",blank:1},
+          {text:["Don't worry! Everything is _____ .","okay"],answer:"okay",blank:1},
+          {text:["Why are you _____ ? Tell me.","sad"],answer:"sad",blank:1},
+        ],
+        words: ["tired","excited","okay","sad"]
+      },
+      {
+        type: "complete",
+        title: "Day 12 Complete!",
+        message: "Beautiful! Feelings are so important to share! How do you feel right now? Tell someone! 😊",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "At School and Work",
+    emoji: "🏫",
+    color: "blue",
+    desc: "Words for school and work",
+    steps: [
+      {
+        type: "vocab",
+        title: "📚 School Words",
+        sub: "Learn words you need at school!",
+        words: [
+          {emoji:"🏫",word:"School",translation:"A place to learn"},
+          {emoji:"👨‍🏫",word:"Teacher",translation:"Person who teaches"},
+          {emoji:"📚",word:"Homework",translation:"School work at home"},
+          {emoji:"✏️",word:"Pencil",translation:"You write with this"},
+          {emoji:"📓",word:"Notebook",translation:"Book you write in"},
+          {emoji:"📏",word:"Ruler",translation:"Measures length"},
+          {emoji:"🖥️",word:"Computer",translation:"Electronic machine"},
+          {emoji:"🚌",word:"School bus",translation:"Takes children to school"},
+          {emoji:"🔔",word:"Bell",translation:"Makes a sound to start/end class"},
+          {emoji:"🏆",word:"Grade",translation:"Your score on work"},
+        ]
+      },
+      {
+        type: "vocab",
+        title: "📚 Work Words",
+        sub: "Learn words for the workplace!",
+        words: [
+          {emoji:"💼",word:"Job / Work",translation:"What you do for money"},
+          {emoji:"🏢",word:"Office",translation:"A place to work"},
+          {emoji:"👔",word:"Boss",translation:"Your manager, leader at work"},
+          {emoji:"💰",word:"Salary",translation:"Money you earn each month"},
+          {emoji:"🤝",word:"Meeting",translation:"A group talks together"},
+          {emoji:"⏰",word:"On time",translation:"Not late, arrive when planned"},
+          {emoji:"📅",word:"Schedule",translation:"A plan with times"},
+          {emoji:"🏖️",word:"Vacation",translation:"Days off from work"},
+        ]
+      },
+      {
+        type: "quiz",
+        title: "🧠 School and Work Quiz!",
+        sub: "Choose the right answer!",
+        questions: [
+          {emoji:"👨‍🏫",q:"The person who teaches you is your...",opts:["Boss","Doctor","Teacher","Friend"],correct:2},
+          {emoji:"💰",q:"The money you earn every month is your...",opts:["Receipt","Salary","Price","Schedule"],correct:1},
+          {emoji:"📚",q:"School work you do at home is called...",opts:["Vacation","Meeting","Grade","Homework"],correct:3},
+          {emoji:"⏰",q:"You arrive exactly when planned. You are...",opts:["Late","On time","Early","Absent"],correct:1},
+        ]
+      },
+      {
+        type: "match",
+        title: "🎯 Match School and Work!",
+        sub: "Match each emoji to the correct word!",
+        pairs: [
+          {left:"✏️",right:"Pencil"},
+          {left:"💼",right:"Job"},
+          {left:"🏆",right:"Grade"},
+          {left:"🤝",right:"Meeting"},
+          {left:"🚌",right:"School bus"},
+        ]
+      },
+      {
+        type: "complete",
+        title: "Day 13 Complete!",
+        message: "Excellent! You are ready to speak English at school and work! Only one day left! 🏫💪",
+        words: 10
+      }
+    ]
+  },
+
+  {
+    title: "Review and Celebration!",
+    emoji: "🎓",
+    color: "orange",
+    desc: "Review everything you learned!",
+    steps: [
+      {
+        type: "review_quiz",
+        title: "🎓 Big Review Quiz!",
+        sub: "Let's see what you remember! You got this!",
+        questions: [
+          {emoji:"👋",q:"How do you say hello in English?",opts:["Goodbye","Hello","Thank you","Sorry"],correct:1},
+          {emoji:"3️⃣",q:"What is the number 3 in English?",opts:["Two","Four","Three","Five"],correct:2},
+          {emoji:"💚",q:"What color is grass?",opts:["Blue","Red","Yellow","Green"],correct:3},
+          {emoji:"👩",q:"Your female parent is your...",opts:["Sister","Grandmother","Mother","Daughter"],correct:2},
+          {emoji:"🍎",q:"This red fruit is an...",opts:["Orange","Banana","Apple","Mango"],correct:2},
+          {emoji:"📅",q:"The day after today is called...",opts:["Yesterday","Tomorrow","Today","Monday"],correct:1},
+          {emoji:"👁️",q:"You see with your...",opts:["Ears","Nose","Hands","Eyes"],correct:3},
+          {emoji:"🏃",q:"Moving fast on your feet means you...",opts:["Walk","Eat","Run","Sleep"],correct:2},
+          {emoji:"💰",q:"You need this to buy things at a store.",opts:["A map","Money","A recipe","A book"],correct:1},
+          {emoji:"☀️",q:"The sun is shining. It is a _____ day.",opts:["Rainy","Cloudy","Sunny","Windy"],correct:2},
+        ]
+      },
+      {
+        type: "final_complete",
+        title: "🎓 Congratulations!",
+        message: "You completed all 14 days of Hello English! You are incredible! Keep learning every day!",
+        words: 0
+      }
+    ]
+  },
+];
+
+// ══════════════════════════════════════════════════════════════
+//  DICTIONARY DATA
+// ══════════════════════════════════════════════════════════════
+const DICT_WORDS = [
+  {emoji:"👋",word:"Hello",type:"greeting",def:"A friendly word when you meet someone",example:"Hello! My name is Maria."},
+  {emoji:"🔢",word:"Number",type:"noun",def:"A word for amounts: one, two, three...",example:"What is your phone number?"},
+  {emoji:"🌈",word:"Color",type:"noun",def:"Red, blue, green, yellow — these are colors",example:"What color is the sky?"},
+  {emoji:"👨‍👩‍👧‍👦",word:"Family",type:"noun",def:"Your relatives — mother, father, brothers, sisters",example:"I have a big family."},
+  {emoji:"🍎",word:"Apple",type:"noun",def:"A round red or green fruit",example:"I eat an apple every day."},
+  {emoji:"💧",word:"Water",type:"noun",def:"Clear liquid — very important to drink",example:"Can I have some water, please?"},
+  {emoji:"📅",word:"Today",type:"noun",def:"This current day right now",example:"Today is Monday."},
+  {emoji:"👁️",word:"Eye",type:"noun",def:"The part of your body you see with",example:"She has beautiful blue eyes."},
+  {emoji:"🏃",word:"Run",type:"verb",def:"To move quickly on your feet",example:"I run every morning."},
+  {emoji:"😊",word:"Happy",type:"adjective",def:"Feeling joy and pleasure",example:"I am very happy today!"},
+  {emoji:"🛒",word:"Buy",type:"verb",def:"To give money and receive something",example:"I want to buy bread."},
+  {emoji:"➡️",word:"Right",type:"direction",def:"The opposite of left",example:"Turn right at the traffic light."},
+  {emoji:"☀️",word:"Sunny",type:"adjective",def:"When the sun is shining brightly",example:"It is a sunny day!"},
+  {emoji:"😢",word:"Sad",type:"adjective",def:"Feeling unhappy or sorrowful",example:"Why are you sad?"},
+  {emoji:"🏫",word:"School",type:"noun",def:"A place where children go to learn",example:"I go to school every day."},
+  {emoji:"👨‍🏫",word:"Teacher",type:"noun",def:"A person who teaches others",example:"My teacher is very kind."},
+  {emoji:"💰",word:"Money",type:"noun",def:"Coins and bills used to buy things",example:"I need money to buy food."},
+  {emoji:"🗺️",word:"Map",type:"noun",def:"A picture showing places and roads",example:"Can I see your map, please?"},
+  {emoji:"❄️",word:"Cold",type:"adjective",def:"Low temperature, not warm",example:"It is very cold in winter."},
+  {emoji:"🍞",word:"Bread",type:"noun",def:"Food made from flour, baked in an oven",example:"I eat bread for breakfast."},
+];
+
+// ══════════════════════════════════════════════════════════════
+//  HOME RENDER
+// ══════════════════════════════════════════════════════════════
+function updateHome() {
+  document.getElementById('streakDays').textContent = state.streak;
+  document.getElementById('totalStars').textContent = state.stars;
+  document.getElementById('daysCompleted').textContent = state.completed.length;
+  document.getElementById('wordsLearned').textContent = state.wordsLearned;
+  document.getElementById('streakDisplay').textContent = `🔥 ${state.streak} days`;
+  const pct = (state.completed.length / DAYS.length) * 100;
+  document.getElementById('overallProgress').style.width = pct + '%';
+
+  const grid = document.getElementById('daysGrid');
+  grid.innerHTML = '';
+  DAYS.forEach((day, i) => {
+    const done = state.completed.includes(i);
+    const locked = i > 0 && !state.completed.includes(i - 1) && !done && i > state.completed.length;
+    grid.innerHTML += `
+      <div class="day-card ${day.color}${done?' completed':''}" onclick="${locked ? 'showLockedMsg()' : `startLesson(${i})`}" style="${locked?'opacity:.5;cursor:not-allowed;':''}">
+        <div class="day-num">Day ${i + 1}</div>
+        <span class="day-emoji">${day.emoji}</span>
+        <div class="day-title">${day.title}</div>
+        <div class="day-desc">${day.desc}</div>
+        <div class="day-time">⏱️ ~60 minutes ${locked ? '🔒' : done ? '✅' : '▶️'}</div>
+      </div>`;
+  });
+}
+
+function showLockedMsg() {
+  alert('🔒 Finish the previous lesson first! You are doing great!');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  LESSON ENGINE
+// ══════════════════════════════════════════════════════════════
+function startLesson(dayIndex) {
+  currentDay = dayIndex;
+  currentStep = 0;
+  sessionStars = 0;
+  quizAnswered = false;
+  fillAnswers = {};
+
+  const day = DAYS[dayIndex];
+  document.getElementById('lessonDayLabel').textContent = `Day ${dayIndex + 1}`;
+  document.getElementById('lessonTitle').textContent = day.title;
+  document.getElementById('sessionStars').textContent = '0';
+
+  updateProgressBar();
+  renderStep();
+  showScreen('lesson');
+}
+
+function updateProgressBar() {
+  const day = DAYS[currentDay];
+  const total = day.steps.length;
+  const steps = document.getElementById('lpSteps');
+  steps.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const cls = i < currentStep ? 'done' : i === currentStep ? 'active' : '';
+    steps.innerHTML += `<div class="lp-dot ${cls}"></div>`;
+  }
+  document.getElementById('lpLabel').textContent = `Step ${currentStep + 1} of ${total}`;
+}
+
+function renderStep() {
+  const day = DAYS[currentDay];
+  const step = day.steps[currentStep];
+  const content = document.getElementById('lessonContent');
+  quizAnswered = false;
+  matchSelected = null;
+  matchedPairs = 0;
+  fillAnswers = {};
+
+  const prevBtn = document.getElementById('prevStepBtn');
+  const nextBtn = document.getElementById('nextStepBtn');
+
+  if (prevBtn) prevBtn.style.display = currentStep > 0 ? 'inline-flex' : 'none';
+  if (nextBtn) {
+    nextBtn.style.display = 'inline-flex';
+    nextBtn.textContent = currentStep < day.steps.length - 1 ? 'Next →' : 'Finish Lesson 🎉';
+  }
+
+  switch (step.type) {
+    case 'vocab':       content.innerHTML = renderVocab(step); break;
+    case 'dialogue':    content.innerHTML = renderDialogue(step); break;
+    case 'quiz':        content.innerHTML = renderQuiz(step); nextBtn.style.display = 'none'; break;
+    case 'review_quiz': content.innerHTML = renderQuiz(step, true); nextBtn.style.display = 'none'; break;
+    case 'fill':        content.innerHTML = renderFill(step); break;
+    case 'match':       content.innerHTML = renderMatch(step); break;
+    case 'phrases':     content.innerHTML = renderPhrases(step); break;
+    case 'complete':
+    case 'final_complete':
+      content.innerHTML = renderComplete(step);
+      if (nextBtn) nextBtn.style.display = 'none';
+      completeLesson();
+      break;
+  }
+}
+
+// ── VOCAB ──
+function renderVocab(step) {
+  const cards = step.words.map((w, i) => `
+    <div class="vocab-card" onclick="flipCard(this,'${escQ(w.word)}')">
+      <span class="vc-emoji">${w.emoji}</span>
+      <div class="vc-word">${w.word}</div>
+      <div class="vc-translation" style="display:none;">${w.translation}</div>
+    </div>`).join('');
+  return `<div class="section-card">
+    <div class="sc-title">🔊 ${step.title}</div>
+    <div class="sc-sub">${step.sub}</div>
+    <div class="vocab-grid">${cards}</div>
+  </div>`;
+}
+
+function flipCard(el, word) {
+  el.classList.toggle('flipped');
+  const trans = el.querySelector('.vc-translation');
+  trans.style.display = trans.style.display === 'none' ? 'block' : 'none';
+  speak(word);
+}
+
+// ── DIALOGUE ──
+function renderDialogue(step) {
+  const lines = step.lines.map(l => `
+    <div class="dlg-line dlg-${l.who.toLowerCase()}">
+      <div>
+        <div class="dlg-name">${l.name}</div>
+        <div class="dlg-avatar">${l.emoji}</div>
+      </div>
+      <div>
+        <div class="dlg-bubble">
+          ${l.text}
+          <div><span class="dlg-speak" onclick="speak('${escQ(l.text)}')">🔊 Listen</span></div>
+        </div>
+      </div>
+    </div>`).join('');
+  return `<div class="section-card">
+    <div class="sc-title">💬 ${step.title}</div>
+    <div class="sc-sub">${step.sub}</div>
+    <div class="dialogue">${lines}</div>
+    <div style="margin-top:1.5rem;">
+      <button class="btn btn-outline" onclick="speakAll(${JSON.stringify(step.lines).replace(/"/g,'&quot;')})">🔊 Play All</button>
+    </div>
+  </div>`;
+}
+
+function speakAll(lines) {
+  let i = 0;
+  function next() {
+    if (i >= lines.length) return;
+    const u = new SpeechSynthesisUtterance(lines[i].text);
+    u.lang = 'en-US'; u.rate = 0.85;
+    u.onend = () => { i++; setTimeout(next, 500); };
+    window.speechSynthesis.speak(u);
+    i++;
+  }
+  window.speechSynthesis.cancel();
+  next();
+}
+
+// ── QUIZ ──
+let quizIndex = 0;
+let quizScore = 0;
+let quizQuestions = [];
+let isReviewQuiz = false;
+
+function renderQuiz(step, review=false) {
+  quizIndex = 0; quizScore = 0;
+  quizQuestions = step.questions;
+  isReviewQuiz = review;
+  return renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  if (quizIndex >= quizQuestions.length) return renderQuizResults();
+  const q = quizQuestions[quizIndex];
+  const opts = q.opts.map((o, i) => `
+    <button class="quiz-opt" onclick="answerQuiz(this,${i},${q.correct},'${escQ(o)}')">
+      ${o}
+    </button>`).join('');
+  return `<div class="section-card">
+    <div class="sc-title">🧠 Quiz — ${quizIndex + 1} / ${quizQuestions.length}</div>
+    <span class="quiz-emoji">${q.emoji}</span>
+    <div class="quiz-question">${q.q}</div>
+    <div class="quiz-options">${opts}</div>
+    <div class="quiz-feedback" id="qfb"></div>
+  </div>`;
+}
+
+function answerQuiz(el, chosen, correct, chosenText) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach((o, i) => {
+    if (i === correct) o.classList.add('correct');
+    else o.classList.add('wrong');
+    o.onclick = null;
+  });
+  const fb = document.getElementById('qfb');
+  if (chosen === correct) {
+    quizScore++; sessionStars++;
+    state.stars++; saveState();
+    document.getElementById('sessionStars').textContent = sessionStars;
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = '✅ Correct! Great job! ⭐';
+    speak('Correct! Great job!');
+  } else {
+    fb.className = 'quiz-feedback show wrong';
+    fb.textContent = `❌ Not quite. The answer is: ${quizQuestions[quizIndex].opts[correct]}`;
+  }
+  setTimeout(() => {
+    quizIndex++; quizAnswered = false;
+    document.getElementById('lessonContent').innerHTML = renderQuizQuestion();
+    if (quizIndex >= quizQuestions.length) {
+      const nextBtn = document.getElementById('nextStepBtn');
+      if (nextBtn) nextBtn.style.display = 'inline-flex';
+    }
+  }, 1800);
+}
+
+function renderQuizResults() {
+  const pct = Math.round((quizScore / quizQuestions.length) * 100);
+  const msg = pct >= 80 ? '🌟 Excellent!' : pct >= 60 ? '👍 Good job!' : '💪 Keep practicing!';
+  const nextBtn = document.getElementById('nextStepBtn');
+  if (nextBtn) nextBtn.style.display = 'inline-flex';
+  return `<div class="section-card" style="text-align:center;">
+    <div style="font-size:4rem;margin-bottom:1rem;">${pct >= 80 ? '🏆' : pct >= 60 ? '😊' : '🤔'}</div>
+    <div class="sc-title" style="justify-content:center;">Quiz Complete!</div>
+    <div style="font-size:2.5rem;font-family:'Baloo 2',cursive;font-weight:800;color:var(--blue-dark);margin:1rem 0;">${quizScore} / ${quizQuestions.length}</div>
+    <div style="font-size:1.2rem;font-weight:700;margin-bottom:.5rem;">${msg}</div>
+    <div style="font-size:.9rem;color:var(--gray-600);">You scored ${pct}%${pct >= 80 ? ' — Amazing!' : '. Review the words and try again!'}</div>
+  </div>`;
+}
+
+// ── FILL IN BLANK ──
+let fillCurrentIndex = 0;
+let fillStepData = null;
+let fillUserAnswers = [];
+
+function renderFill(step) {
+  fillCurrentIndex = 0;
+  fillStepData = step;
+  fillUserAnswers = new Array(step.sentences.length).fill(null);
+  return renderFillQuestion();
+}
+
+function renderFillQuestion() {
+  if (fillCurrentIndex >= fillStepData.sentences.length) return renderFillResults();
+  const s = fillStepData.sentences[fillCurrentIndex];
+  const words = fillStepData.words.map(w =>
+    `<button class="word-chip" onclick="selectFill(this,'${escQ(w)}')">${w}</button>`
+  ).join('');
+  const textParts = s.text[0].split('_____');
+  return `<div class="section-card">
+    <div class="sc-title">✏️ ${fillStepData.title} — ${fillCurrentIndex + 1} / ${fillStepData.sentences.length}</div>
+    <div class="sc-sub">${fillStepData.sub}</div>
+    <div class="sentence-display">
+      ${textParts[0]}<input class="blank-input" id="fillInput" readonly placeholder="?"> ${textParts[1] || ''}
+    </div>
+    <div class="word-bank">${words}</div>
+    <div class="quiz-feedback" id="fillFb"></div>
+  </div>`;
+}
+
+function selectFill(el, word) {
+  const input = document.getElementById('fillInput');
+  const fb = document.getElementById('fillFb');
+  if (!input || !fb) return;
+  input.value = word;
+  const s = fillStepData.sentences[fillCurrentIndex];
+  if (word.toLowerCase() === s.answer.toLowerCase()) {
+    sessionStars++; state.stars++; saveState();
+    document.getElementById('sessionStars').textContent = sessionStars;
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = '✅ Correct! ⭐';
+    speak(word);
+    document.querySelectorAll('.word-chip').forEach(c => c.onclick = null);
+    setTimeout(() => {
+      fillCurrentIndex++;
+      document.getElementById('lessonContent').innerHTML = renderFillQuestion();
+      if (fillCurrentIndex >= fillStepData.sentences.length) {
+        const nb = document.getElementById('nextStepBtn');
+        if (nb) nb.style.display = 'inline-flex';
+      }
+    }, 1500);
+  } else {
+    fb.className = 'quiz-feedback show wrong';
+    fb.textContent = '❌ Try another word!';
+    el.classList.add('used');
+  }
+}
+
+function renderFillResults() {
+  const nb = document.getElementById('nextStepBtn');
+  if (nb) nb.style.display = 'inline-flex';
+  return `<div class="section-card" style="text-align:center;">
+    <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+    <div class="sc-title" style="justify-content:center;">Fill-in Complete!</div>
+    <div style="font-size:1.1rem;color:var(--gray-600);">Great work! You filled in all the blanks! Keep going! 💪</div>
+  </div>`;
+}
+
+// ── MATCH ──
+let matchLeft = null;
+let matchRight = null;
+let matchPairs = [];
+let matchDone = 0;
+
+function renderMatch(step) {
+  matchLeft = null; matchRight = null;
+  matchDone = 0;
+  matchPairs = step.pairs;
+  const leftItems = step.pairs.map((p, i) =>
+    `<div class="match-item" id="ml${i}" onclick="selectMatch('left',${i},'${escQ(p.left)}')">${p.left}</div>`
+  ).join('');
+  const shuffled = [...step.pairs].sort(() => Math.random() - .5);
+  const rightItems = shuffled.map((p, i) => {
+    const orig = step.pairs.findIndex(x => x.right === p.right);
+    return `<div class="match-item" id="mr${orig}" onclick="selectMatch('right',${orig},'${escQ(p.right)}')">${p.right}</div>`;
+  }).join('');
+  return `<div class="section-card">
+    <div class="sc-title">🎯 ${step.title}</div>
+    <div class="sc-sub">${step.sub}</div>
+    <div class="match-grid">
+      <div class="match-col">${leftItems}</div>
+      <div class="match-col">${rightItems}</div>
+    </div>
+    <div class="quiz-feedback" id="matchFb"></div>
+  </div>`;
+}
+
+let matchSelLeft = null, matchSelRight = null;
+
+function selectMatch(side, idx, val) {
+  if (side === 'left') {
+    if (matchSelLeft !== null) {
+      const prev = document.getElementById('ml' + matchSelLeft);
+      if (prev && !prev.classList.contains('matched')) prev.classList.remove('selected');
+    }
+    matchSelLeft = idx;
+    const el = document.getElementById('ml' + idx);
+    if (el && !el.classList.contains('matched')) el.classList.add('selected');
+  } else {
+    if (matchSelRight !== null) {
+      const prev = document.getElementById('mr' + matchSelRight);
+      if (prev && !prev.classList.contains('matched')) prev.classList.remove('selected');
+    }
+    matchSelRight = idx;
+    const el = document.getElementById('mr' + idx);
+    if (el && !el.classList.contains('matched')) el.classList.add('selected');
+  }
+
+  if (matchSelLeft !== null && matchSelRight !== null) {
+    const lEl = document.getElementById('ml' + matchSelLeft);
+    const rEl = document.getElementById('mr' + matchSelRight);
+    const fb = document.getElementById('matchFb');
+
+    if (matchSelLeft === matchSelRight) {
+      if (lEl) { lEl.classList.remove('selected'); lEl.classList.add('matched'); }
+      if (rEl) { rEl.classList.remove('selected'); rEl.classList.add('matched'); }
+      matchDone++;
+      sessionStars++; state.stars++; saveState();
+      document.getElementById('sessionStars').textContent = sessionStars;
+      if (fb) { fb.className = 'quiz-feedback show correct'; fb.textContent = '✅ Match! Great!'; }
+      speak(matchPairs[matchSelLeft].right);
+      if (matchDone >= matchPairs.length) {
+        setTimeout(() => {
+          if (fb) fb.textContent = '🎉 All matched! Amazing!';
+          const nb = document.getElementById('nextStepBtn');
+          if (nb) nb.style.display = 'inline-flex';
+        }, 800);
+      }
+    } else {
+      if (lEl) { lEl.classList.add('wrong'); setTimeout(() => { lEl.classList.remove('wrong','selected'); }, 800); }
+      if (rEl) { rEl.classList.add('wrong'); setTimeout(() => { rEl.classList.remove('wrong','selected'); }, 800); }
+      if (fb) { fb.className = 'quiz-feedback show wrong'; fb.textContent = '❌ Not a match. Try again!'; }
+    }
+    matchSelLeft = null; matchSelRight = null;
+  }
+}
+
+// ── PHRASES ──
+function renderPhrases(step) {
+  const rows = step.phrases.map(p => `
+    <div class="phrase-row" onclick="speak('${escQ(p.en)}')">
+      <span style="font-size:1.4rem;">🔊</span>
+      <div class="phrase-en">${p.en}</div>
+      <div class="phrase-note">${p.note}</div>
+    </div>`).join('');
+  return `<div class="section-card">
+    <div class="sc-title">📝 ${step.title}</div>
+    <div class="sc-sub">${step.sub} <strong>Click any phrase to hear it!</strong></div>
+    <div class="phrase-list">${rows}</div>
+    <div class="tip-box" style="margin-top:1rem;">
+      <span class="tip-icon">💡</span>
+      <div>Say each phrase OUT LOUD three times! Speaking practice is very important!</div>
+    </div>
+  </div>`;
+}
+
+// ── COMPLETE ──
+function renderComplete(step) {
+  return `<div class="section-card">
+    <div class="celebration">
+      <span class="celebration-emoji">🎉</span>
+      <h2>${step.title}</h2>
+      <p style="font-size:1.1rem;color:var(--gray-600);line-height:1.7;max-width:480px;margin:0 auto 2rem;">${step.message}</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-success" onclick="showScreen('home')">🏠 Back to Home</button>
+        ${currentDay < DAYS.length - 1 ?
+          `<button class="btn btn-primary" onclick="startLesson(${currentDay + 1})">Next Day →</button>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── LESSON COMPLETE ──
+function completeLesson() {
+  if (!state.completed.includes(currentDay)) {
+    state.completed.push(currentDay);
+    state.streak++;
+    const day = DAYS[currentDay];
+    state.wordsLearned += (day.steps.find(s => s.words) || {words:[]}).words.length || 8;
+    saveState();
+  }
+}
+
+function nextStep() {
+  const day = DAYS[currentDay];
+  if (currentStep < day.steps.length - 1) {
+    currentStep++;
+    updateProgressBar();
+    renderStep();
+    window.scrollTo(0, 0);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    updateProgressBar();
+    renderStep();
+    window.scrollTo(0, 0);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  DICTIONARY
+// ══════════════════════════════════════════════════════════════
+function renderDict(filter='') {
+  const words = DICT_WORDS.filter(w =>
+    !filter || w.word.toLowerCase().includes(filter.toLowerCase()) ||
+    w.def.toLowerCase().includes(filter.toLowerCase())
+  );
+  const results = document.getElementById('dictResults');
+  if (!results) return;
+  results.innerHTML = words.map(w => `
+    <div class="dict-card" onclick="speak('${escQ(w.word)}')">
+      <div class="dict-emoji">${w.emoji}</div>
+      <div>
+        <div class="dict-word">${w.word}</div>
+        <span class="dict-type">${w.type}</span>
+        <div class="dict-def">${w.def}</div>
+        <div class="dict-example">"${w.example}"</div>
+      </div>
+    </div>`).join('');
+  if (words.length === 0) results.innerHTML = '<div style="text-align:center;color:var(--gray-600);padding:2rem;">No words found. Try another search! 🔍</div>';
+}
+
+function searchDict() {
+  renderDict(document.getElementById('dictSearch').value);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  UTILS
+// ══════════════════════════════════════════════════════════════
+function escQ(str) {
+  return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════════
+updateHome();
+renderDict();
+</script>
+</body>
+</html>
